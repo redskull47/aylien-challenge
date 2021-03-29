@@ -1,0 +1,14 @@
+{
+    "defaultSeverity": "error",
+    "extends": [
+        "tslint-config-airbnb"
+    ],
+    "rules": {
+        "no-unsafe-any": true,
+        "only-arrow-functions": [
+            false,
+            "allow-declarations",
+            "allow-named-functions"
+        ]
+    }
+}

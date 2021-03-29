@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "node_modules/*": [
+        "node_modules/*",
+      ],
+      "services/*": [
+        "src/services/*"
+      ],
+      "config/*": [
+        "src/config/*"
+      ],
+      "components/*": [
+        "src/components/*"
+      ],
+      "views/*": [
+        "src/views/*"
+      ],
+    }
+  }
+}
