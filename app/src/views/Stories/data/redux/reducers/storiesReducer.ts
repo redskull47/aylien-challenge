@@ -1,10 +1,13 @@
-import { IAutocompleteResponse } from "../actions/interfaces/IStoriesActions";
+import { IAutocompleteResponse, IStories } from "../actions/interfaces/IStoriesActions";
 import { STORIES_ACTION_TYPES } from "../actions/storiesActionTypes";
-import { IStories } from "./interfaces/IStories";
+import { IStoriesReducer } from "./interfaces/IStoriesReducer";
 
-const defaultState: IStories = {
+const defaultState: IStoriesReducer = {
   autocompletes: [],
-  stories: [],
+  stories: {
+    pending: false,
+    list: [],
+  },
 };
 
 export default function stories(
@@ -18,6 +21,28 @@ export default function stories(
       return {
         ...state,
         autocompletes: autocompletes,
+      }
+    }
+
+    case STORIES_ACTION_TYPES.GET_STORIES.GET_STORIES_PENDING: {
+      return {
+        ...state,
+        stories: {
+          pending: true,
+          list: [],
+        }
+      }
+    }
+
+    case STORIES_ACTION_TYPES.GET_STORIES.GET_STORIES_SUCCESS: {
+      const stories = action.payload as IStories;
+
+      return {
+        ...state,
+        stories: {
+          pending: false,
+          list: stories,
+        }
       }
     }
 

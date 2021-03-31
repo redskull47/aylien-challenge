@@ -3,6 +3,7 @@ import { setRequestHeader } from './apiUtils/requestHeaders';
 
 export interface IApiService {
   get: (url: string, config?: AxiosRequestConfig) => AxiosPromise<any>;
+  post: (url: string, data: any, config?: AxiosRequestConfig) => AxiosPromise<any>;
 }
 
 axios.defaults.baseURL = '/api';
@@ -15,6 +16,9 @@ setRequestHeader('X-AYLIEN-NewsAPI-Application-Key', process.env['REACT_APP_X-AY
 const service: IApiService = {
   get(url, config) {
     return axios.get(url, config);
+  },
+  post(url, data, config) {
+    return axios.post(url, data, config);
   }
 };
 

@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { IState } from 'services/common/redux/reducers/interfaces/IState';
-import { getAutocomplete } from '../../../../views/Stories/data/redux/actions/storiesActions';
+import { getAutocomplete, getStoriesSearch } from '../../../../views/Stories/data/redux/actions/storiesActions';
 
 function Autocompletes() {
   const dispatch = useDispatch();
@@ -12,15 +12,19 @@ function Autocompletes() {
     dispatch(getAutocomplete({term}));
   }, []);
 
+  const handleStoriesSearch = useCallback(() => {
+    dispatch(getStoriesSearch({text: term}))
+  }, [term]);
+
   useEffect(() => {
     if (!term) return;
     handleGetAutoComplete(term);
-  }, [term]);
+  }, [term, handleGetAutoComplete]);
 
   const handleStoriesInputChange = useCallback((event) => {
     setTerm(event.target.value);
   }, []);
-  
+
   return (
     <>
       <div className="input-group mt-3 mb-3">
@@ -33,7 +37,14 @@ function Autocompletes() {
           list='autosuggest'
           onChange={handleStoriesInputChange}
         />
-        <button className="btn btn-outline-secondary" type="button" id="search-button">Search</button>
+        <button
+          className="btn btn-outline-secondary"
+          type="button"
+          id="search-button"
+          onClick={handleStoriesSearch}
+          >
+            Search
+        </button>
       </div>
       <datalist id='autosuggest'>
         {autosuggests ? autosuggests.map(({id, text}) => (<option key={id} value={text} />)) : null}

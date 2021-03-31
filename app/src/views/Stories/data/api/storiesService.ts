@@ -8,14 +8,24 @@ export interface IStoriesService {
 
 const storiesService: IStoriesService = {
   getAutocomplete(type, term) {
-    return request.get('/autocompletes', { params: { type, term, 
-      'language': "en",
-      'perPage': 3  
-    }});
+    return request.get('/autocompletes', { 
+      params: { 
+        type,
+        term, 
+        'language': "en",
+        'perPage': 3  
+      }
+    });
   },
 
   getStories(text) {
-    return request.get('/stories', {params: { text }});
+    return request.get('/stories', {
+      params: { 
+        text,
+        'language': ["en"],
+        'per_page': 10,
+      }
+    });
   },
 }
 

@@ -1,5 +1,5 @@
-import { IStories } from 'views/Stories/data/redux/reducers/interfaces/IStories';
+import { IStoriesReducer } from 'views/Stories/data/redux/reducers/interfaces/IStoriesReducer';
 
 export interface IState {
-    stories: IStories;
+    stories: IStoriesReducer;
 }
