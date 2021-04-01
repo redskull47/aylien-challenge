@@ -21,7 +21,7 @@ const storiesService: IStoriesService = {
   getStories(text) {
     return request.get('/stories', {
       params: { 
-        text,
+        'entities.body.surface_forms.text': text,
         'language': ["en"],
         'per_page': 10,
       }

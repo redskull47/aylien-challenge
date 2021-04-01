@@ -6,7 +6,7 @@ export interface IApiService {
   post: (url: string, data: any, config?: AxiosRequestConfig) => AxiosPromise<any>;
 }
 
-axios.defaults.baseURL = '/api';
+axios.defaults.baseURL = '/news';
 axios.defaults.withCredentials = true;
 
 //FIXME: change inline type to proper solution
