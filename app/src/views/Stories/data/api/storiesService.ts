@@ -1,9 +1,9 @@
 import { AxiosPromise } from 'axios';
-import request from '../../../../services/api/apiRequest';
+import request from '@services/api/apiRequest';
 
 export interface IStoriesService {
   getAutocomplete: (type: string, term: string) => AxiosPromise<any>;
-  getStories: (text: string) => AxiosPromise<any>;
+  getStories: (text: string, pageCursor?: string) => AxiosPromise<any>;
 }
 
 const storiesService: IStoriesService = {
@@ -18,14 +18,21 @@ const storiesService: IStoriesService = {
     });
   },
 
-  getStories(text) {
-    return request.get('/stories', {
-      params: { 
-        'entities.body.surface_forms.text': text,
-        'language': ["en"],
-        'per_page': 10,
-      }
-    });
+  getStories(text, pageCursor) {
+    const params = { 
+      'language': ["en"],
+      'query': {
+        "entity": {
+          "$and": [
+            {"surface_forms.text": {"$text": text}},
+          ]
+        }
+      },
+      'per_page': 25,
+      cursor: pageCursor || '*',
+    };
+
+    return request.get('/stories', {params});
   },
 }
 

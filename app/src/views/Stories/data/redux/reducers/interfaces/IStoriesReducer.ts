@@ -8,6 +8,8 @@ export interface IAutocomplete {
 interface IStoriesEntity {
   pending: Boolean;
   list: IStories;
+  'next_page_cursor': string;
+  term: string;
 }
 
 export interface IStoriesReducer {

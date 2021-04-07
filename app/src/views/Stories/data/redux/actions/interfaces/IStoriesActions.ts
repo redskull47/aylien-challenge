@@ -24,7 +24,7 @@ interface IStorySummary {
 
 export interface IStory {
   title: string;
-  published_at: Date;
+  published_at: string;
   id: number;
   source: IStorySource;
   summary: IStorySummary;

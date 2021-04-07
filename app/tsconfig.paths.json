@@ -2,19 +2,19 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "node_modules/*": [
+      "@node_modules/*": [
         "node_modules/*",
       ],
-      "services/*": [
+      "@services/*": [
         "src/services/*"
       ],
-      "config/*": [
+      "@config/*": [
         "src/config/*"
       ],
-      "components/*": [
+      "@components/*": [
         "src/components/*"
       ],
-      "views/*": [
+      "@views/*": [
         "src/views/*"
       ],
     }
