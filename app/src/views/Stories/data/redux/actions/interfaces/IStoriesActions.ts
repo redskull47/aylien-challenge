@@ -22,12 +22,25 @@ interface IStorySummary {
   sentences: Array<string>;
 }
 
+enum MediaType {
+  'image'
+}
+
+interface IStoryMedia {
+  format: string;
+  height: number;
+  width: number;
+  type: MediaType;
+  url: string;
+}
+
 export interface IStory {
   title: string;
   published_at: string;
   id: number;
   source: IStorySource;
   summary: IStorySummary;
+  media: Array<IStoryMedia>;
 }
 
 export type IStories = Array<IStory>;

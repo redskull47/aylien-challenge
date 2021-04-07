@@ -3,7 +3,7 @@ import parseDate from "@services/common/utils/dateParser";
 import { IStory } from "@views/Stories/data/redux/actions/interfaces/IStoriesActions";
 
 function Story(props : IStory) {
-  const {id, title, summary, source, published_at} = props;
+  const {id, title, summary, source, published_at, media} = props;
     return (<Accordion className="mb-3">
       <Card>
         <Accordion.Toggle as={Card.Header} style={{fontWeight: 'strong'}} eventKey={id.toString()}>
@@ -16,6 +16,9 @@ function Story(props : IStory) {
             <div className="col-9">
             {summary?.sentences?.map((sentence: string, index: number) => (<p className="card-text" key={`${id}-${index}`}>{sentence}</p>))}
             </div>
+            {media && media.map((element: any) => {
+              if (element.type === 'image') return <Image src={element?.url} key={element?.url} />;
+            })}
             <div className="col-3">
               <Button variant="link" href={source.home_page_url}>
                 <Image src={source?.logo_url} />

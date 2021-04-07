@@ -50,5 +50,13 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://api.aylien.com/"
+  "proxy": "https://api.aylien.com/",
+  "jest": {
+    "moduleNameMapper": {
+      "^@services/(.*)": "<rootDir>/src/services/$1",
+      "^@config/(.*)": "<rootDir>/src/config/$1",
+      "^@components/(.*)": "<rootDir>/src/components/$1",
+      "^@views/(.*)": "<rootDir>/src/views/$1",
+    }
+  }
 }
